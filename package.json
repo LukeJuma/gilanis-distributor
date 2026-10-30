@@ -1,0 +1,24 @@
+{
+  "name": "gilanis-distributor-website",
+  "version": "1.0.0",
+  "description": "Wholesale e-commerce website for Gilanis Distributor's",
+  "main": "index.html",
+  "scripts": {
+    "dev": "echo 'Open index.html in your browser'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "wholesale",
+    "e-commerce",
+    "kenya",
+    "cooking-oil",
+    "rice",
+    "flour"
+  ],
+  "author": "Gilanis Distributor's",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR-USERNAME/gilanis-distributor-website"
+  }
+}
