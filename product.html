@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: false, cartCount: 0, mobileMenu: false, selectedImage: 0, quantity: 1, selectedTab: 'description' }" :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rina Cooking Oil - 20L | Gilanis Distributor's</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    
+    <!-- Top Promo Bar -->
+    <div class="bg-primary-600 text-white py-2 text-sm">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span class="font-semibold"><i class="fas fa-bolt mr-2"></i>WHOLESALE SALE UP TO 40% OFF - BULK ORDERS</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="tel:+254700000000" class="hover:underline"><i class="fas fa-phone mr-1"></i>+254 700 000 000</a>
+                <span>|</span>
+                <span>Kikuyu, Sigona - Kenya</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="bg-primary-600 text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold">
+                        GD
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-gray-900 dark:text-white">Gilanis Distributor's</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">Wholesale Solutions</div>
+                    </div>
+                </a>
+
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Home</a>
+                    <a href="shop.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Shop</a>
+                    <a href="calculator.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Pricing Calculator</a>
+                    <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">About Us</a>
+                    <a href="gallery.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Gallery</a>
+                    <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    <button @click="darkMode = !darkMode" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500">
+                        <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'" class="text-xl"></i>
+                    </button>
+                    <a href="cart.html" class="relative text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span x-show="cartCount > 0" class="absolute -top-2 -right-2 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" x-text="cartCount"></span>
+                    </a>
+                    <a href="#" class="hidden md:block bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition">
+                        Sign In
+                    </a>
+                    <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div x-show="mobileMenu" x-cloak class="lg:hidden pb-4 border-t dark:border-gray-700 mt-2 pt-4">
+                <a href="index.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Home</a>
+                <a href="shop.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Shop</a>
+                <a href="calculator.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Pricing Calculator</a>
+                <a href="about.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">About Us</a>
+                <a href="gallery.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Gallery</a>
+                <a href="contact.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-50 dark:bg-gray-800 py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center space-x-2 text-sm">
+                <a href="index.html" class="text-gray-600 dark:text-gray-400 hover:text-primary-600">Home</a>
+                <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                <a href="shop.html" class="text-gray-600 dark:text-gray-400 hover:text-primary-600">Shop</a>
+                <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                <a href="shop.html?category=cooking-oils" class="text-gray-600 dark:text-gray-400 hover:text-primary-600">Cooking Oils</a>
+                <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                <span class="text-gray-900 dark:text-white font-medium">Rina Cooking Oil - 20L</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <!-- Product Images -->
+            <div>
+                <!-- Main Image -->
+                <div class="mb-4 bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&h=600&fit=crop" alt="Rina Cooking Oil" class="w-full h-96 object-cover">
+                </div>
+                
+                <!-- Thumbnail Images -->
+                <div class="grid grid-cols-4 gap-4">
+                    <button @click="selectedImage = 0" :class="selectedImage === 0 ? 'ring-2 ring-primary-600' : ''" class="rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=200&h=200&fit=crop" alt="View 1" class="w-full h-24 object-cover">
+                    </button>
+                    <button @click="selectedImage = 1" :class="selectedImage === 1 ? 'ring-2 ring-primary-600' : ''" class="rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=200&h=200&fit=crop" alt="View 2" class="w-full h-24 object-cover">
+                    </button>
+                    <button @click="selectedImage = 2" :class="selectedImage === 2 ? 'ring-2 ring-primary-600' : ''" class="rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=200&h=200&fit=crop" alt="View 3" class="w-full h-24 object-cover">
+                    </button>
+                    <button @click="selectedImage = 3" :class="selectedImage === 3 ? 'ring-2 ring-primary-600' : ''" class="rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=200&h=200&fit=crop" alt="View 4" class="w-full h-24 object-cover">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div>
+                <div class="flex items-center space-x-2 mb-3">
+                    <span class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">28% OFF</span>
+                    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">IN STOCK</span>
+                </div>
+
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Rina Cooking Oil - 20L</h1>
+
+                <!-- Rating -->
+                <div class="flex items-center mb-6">
+                    <div class="flex text-yellow-400 text-lg">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="text-gray-600 dark:text-gray-400 ml-2">(4.5 stars - 127 reviews)</span>
+                </div>
+
+                <!-- Price -->
+                <div class="mb-6">
+                    <div class="flex items-baseline space-x-3 mb-2">
+                        <span class="text-5xl font-bold text-primary-600">KSh 4,200</span>
+                        <span class="text-2xl text-gray-400 line-through">KSh 5,850</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">You save: <span class="text-green-600 font-semibold">KSh 1,650 (28%)</span></p>
+                </div>
+
+                <!-- Bulk Pricing Table -->
+                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 mb-6">
+                    <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-3 flex items-center">
+                        <i class="fas fa-layer-group text-primary-600 mr-2"></i>
+                        Bulk Pricing Tiers
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700 dark:text-gray-300">1 - 11 units:</span>
+                            <span class="font-bold text-gray-900 dark:text-white">KSh 4,200/unit</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700 dark:text-gray-300">12 - 23 units:</span>
+                            <span class="font-bold text-green-600">KSh 4,000/unit (Save 4.8%)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700 dark:text-gray-300">24 - 47 units:</span>
+                            <span class="font-bold text-green-600">KSh 3,850/unit (Save 8.3%)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700 dark:text-gray-300">48+ units:</span>
+                            <span class="font-bold text-green-600">KSh 3,700/unit (Save 11.9%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quantity Selector -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Quantity:</label>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center border-2 border-gray-300 dark:border-gray-600 rounded-lg">
+                            <button @click="quantity = Math.max(1, quantity - 1)" class="px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" x-model="quantity" min="1" class="w-20 text-center py-3 border-x-2 border-gray-300 dark:border-gray-600 bg-transparent focus:outline-none">
+                            <button @click="quantity++" class="px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="text-gray-600 dark:text-gray-400">
+                            <span class="font-semibold" x-text="'Total: KSh ' + (4200 * quantity).toLocaleString()"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add to Cart Button -->
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <button class="flex-1 bg-primary-600 text-white py-4 px-6 rounded-lg hover:bg-primary-700 transition font-semibold text-lg">
+                        <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+                    </button>
+                    <button class="bg-green-600 text-white py-4 px-6 rounded-lg hover:bg-green-700 transition font-semibold text-lg">
+                        <i class="fab fa-whatsapp mr-2"></i>Order on WhatsApp
+                    </button>
+                </div>
+
+                <!-- Product Meta -->
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-6 space-y-3">
+                    <div class="flex items-center">
+                        <span class="text-gray-600 dark:text-gray-400 w-32">SKU:</span>
+                        <span class="text-gray-900 dark:text-white font-medium">RINA-20L-001</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-gray-600 dark:text-gray-400 w-32">Category:</span>
+                        <a href="shop.html?category=cooking-oils" class="text-primary-600 hover:underline">Cooking Oils</a>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-gray-600 dark:text-gray-400 w-32">Brand:</span>
+                        <span class="text-gray-900 dark:text-white font-medium">Rina</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-gray-600 dark:text-gray-400 w-32">Stock Status:</span>
+                        <span class="text-green-600 font-semibold"><i class="fas fa-check-circle mr-1"></i>In Stock (500+ units)</span>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="mt-6 bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                    <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">Key Features</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Premium quality vegetable cooking oil</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Perfect for frying, baking, and cooking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">20 liter bulk packaging</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Free delivery on orders above KSh 50,000</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details Tabs -->
+        <div class="mt-16">
+            <!-- Tab Navigation -->
+            <div class="flex border-b border-gray-200 dark:border-gray-700 mb-8">
+                <button @click="selectedTab = 'description'" :class="selectedTab === 'description' ? 'border-primary-600 text-primary-600' : 'border-transparent text-gray-600 dark:text-gray-400'" class="px-6 py-3 font-semibold border-b-2 transition">
+                    Description
+                </button>
+                <button @click="selectedTab = 'specifications'" :class="selectedTab === 'specifications' ? 'border-primary-600 text-primary-600' : 'border-transparent text-gray-600 dark:text-gray-400'" class="px-6 py-3 font-semibold border-b-2 transition">
+                    Specifications
+                </button>
+                <button @click="selectedTab = 'reviews'" :class="selectedTab === 'reviews' ? 'border-primary-600 text-primary-600' : 'border-transparent text-gray-600 dark:text-gray-400'" class="px-6 py-3 font-semibold border-b-2 transition">
+                    Reviews (127)
+                </button>
+                <button @click="selectedTab = 'shipping'" :class="selectedTab === 'shipping' ? 'border-primary-600 text-primary-600' : 'border-transparent text-gray-600 dark:text-gray-400'" class="px-6 py-3 font-semibold border-b-2 transition">
+                    Shipping Info
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div>
+                <!-- Description -->
+                <div x-show="selectedTab === 'description'" class="prose dark:prose-invert max-w-none">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Product Description</h2>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Rina Cooking Oil is a premium quality vegetable oil perfect for all your cooking needs. Made from carefully selected ingredients, this cooking oil is ideal for restaurants, hotels, catering businesses, and large households.
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Our 20-liter wholesale packaging ensures you have sufficient supply for your business operations while enjoying the best bulk pricing in Kenya. Rina Cooking Oil is known for its high smoke point, making it perfect for deep frying, sautéing, and general cooking.
+                    </p>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 mt-6">Benefits</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>Rich in essential fatty acids</li>
+                        <li>Light taste that doesn't overpower food flavors</li>
+                        <li>Excellent for high-temperature cooking</li>
+                        <li>Long shelf life when stored properly</li>
+                        <li>Economical bulk packaging for businesses</li>
+                    </ul>
+                </div>
+
+                <!-- Specifications -->
+                <div x-show="selectedTab === 'specifications'">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Product Specifications</h2>
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden">
+                        <table class="w-full">
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400 font-medium">Volume</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-white">20 Liters</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400 font-medium">Packaging</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-white">Plastic Jerry Can</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400 font-medium">Weight</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-white">18.5 kg approx</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400 font-medium">Shelf Life</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-white">12 months from manufacture date</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400 font-medium">Storage</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-white">Store in cool, dry place away from direct sunlight</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400 font-medium">Origin</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-white">Kenya</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400 font-medium">Certification</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-white">KEBS Certified</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Reviews -->
+                <div x-show="selectedTab === 'reviews'">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Customer Reviews</h2>
+                    
+                    <!-- Review Summary -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 mb-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="text-center">
+                                <div class="text-6xl font-bold text-primary-600 mb-2">4.5</div>
+                                <div class="flex justify-center text-yellow-400 text-xl mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="text-gray-600 dark:text-gray-400">Based on 127 reviews</div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-16">5 stars</span>
+                                    <div class="flex-1 mx-4 bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                        <div class="bg-yellow-400 h-3 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-12">95</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-16">4 stars</span>
+                                    <div class="flex-1 mx-4 bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                        <div class="bg-yellow-400 h-3 rounded-full" style="width: 15%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-12">19</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-16">3 stars</span>
+                                    <div class="flex-1 mx-4 bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                        <div class="bg-yellow-400 h-3 rounded-full" style="width: 7%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-12">9</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-16">2 stars</span>
+                                    <div class="flex-1 mx-4 bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                        <div class="bg-yellow-400 h-3 rounded-full" style="width: 2%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-12">3</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-16">1 star</span>
+                                    <div class="flex-1 mx-4 bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                        <div class="bg-yellow-400 h-3 rounded-full" style="width: 1%"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 w-12">1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Individual Reviews -->
+                    <div class="space-y-6">
+                        <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <div class="font-bold text-gray-900 dark:text-white">John Kamau</div>
+                                    <div class="flex text-yellow-400 text-sm mt-1">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">2 weeks ago</div>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300">
+                                Excellent quality oil at a great wholesale price. We've been using it in our restaurant for 3 months now. The bulk pricing saved us a lot. Delivery was prompt and professional.
+                            </p>
+                        </div>
+
+                        <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <div class="font-bold text-gray-900 dark:text-white">Mary Wanjiku</div>
+                                    <div class="flex text-yellow-400 text-sm mt-1">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">1 month ago</div>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300">
+                                Best cooking oil for the price. I run a catering business and this has become my go-to supplier. The oil quality is consistent and my customers love the taste of the food.
+                            </p>
+                        </div>
+
+                        <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <div class="font-bold text-gray-900 dark:text-white">Peter Omondi</div>
+                                    <div class="flex text-yellow-400 text-sm mt-1">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">1 month ago</div>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300">
+                                Good quality oil. The 20L packaging is convenient for our hotel. Only gave 4 stars because delivery took 3 days instead of the promised 2 days. Otherwise, very satisfied.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Info -->
+                <div x-show="selectedTab === 'shipping'">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Shipping Information</h2>
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6">
+                            <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-3 flex items-center">
+                                <i class="fas fa-truck text-primary-600 mr-2"></i>
+                                Free Delivery
+                            </h3>
+                            <p class="text-gray-700 dark:text-gray-300">
+                                Enjoy FREE delivery on all orders above KSh 50,000 to anywhere in Kenya. We deliver to all 47 counties.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                            <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">Delivery Timeline</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                                    <div>
+                                        <div class="font-medium text-gray-900 dark:text-white">Nairobi & Environs</div>
+                                        <div class="text-gray-600 dark:text-gray-400">1-2 business days</div>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                                    <div>
+                                        <div class="font-medium text-gray-900 dark:text-white">Major Towns</div>
+                                        <div class="text-gray-600 dark:text-gray-400">2-4 business days</div>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                                    <div>
+                                        <div class="font-medium text-gray-900 dark:text-white">Remote Areas</div>
+                                        <div class="text-gray-600 dark:text-gray-400">5-7 business days</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                            <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">Return Policy</h3>
+                            <p class="text-gray-700 dark:text-gray-300 mb-3">
+                                We accept returns within 7 days of delivery if the product is damaged or defective. Please contact our customer service team immediately upon delivery if you notice any issues.
+                            </p>
+                            <p class="text-gray-700 dark:text-gray-300">
+                                For bulk orders, we recommend inspecting the products upon delivery. Our team will assist with any concerns.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="mt-16">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Related Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Related Product Cards (Similar to shop.html) -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=400&h=300&fit=crop" alt="Salit Oil" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            22% OFF
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Salit Cooking Oil - 10L</h3>
+                        <div class="flex items-baseline space-x-2 mb-3">
+                            <span class="text-xl font-bold text-primary-600">KSh 2,340</span>
+                            <span class="text-gray-400 line-through text-sm">KSh 3,000</span>
+                        </div>
+                        <a href="product.html" class="block w-full text-center bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition font-semibold">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&h=300&fit=crop" alt="Pika Oil" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-yellow-500 text-gray-900 px-3 py-1 rounded-full text-sm font-bold">
+                            BEST SELLER
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Pika Cooking Oil - 5L</h3>
+                        <div class="flex items-baseline space-x-2 mb-3">
+                            <span class="text-xl font-bold text-primary-600">KSh 1,150</span>
+                        </div>
+                        <a href="product.html" class="block w-full text-center bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition font-semibold">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=400&h=300&fit=crop" alt="Sunflower Oil" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            18% OFF
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Sunflower Oil - 10L</h3>
+                        <div class="flex items-baseline space-x-2 mb-3">
+                            <span class="text-xl font-bold text-primary-600">KSh 2,460</span>
+                            <span class="text-gray-400 line-through text-sm">KSh 3,000</span>
+                        </div>
+                        <a href="product.html" class="block w-full text-center bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition font-semibold">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&h=300&fit=crop" alt="Fry Mate" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            FREE SHIP
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Fry Mate Oil - 20L</h3>
+                        <div class="flex items-baseline space-x-2 mb-3">
+                            <span class="text-xl font-bold text-primary-600">KSh 3,900</span>
+                        </div>
+                        <a href="product.html" class="block w-full text-center bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition font-semibold">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="bg-primary-600 text-white w-10 h-10 rounded-lg flex items-center justify-center text-lg font-bold">
+                            GD
+                        </div>
+                        <div class="text-white font-bold text-lg">Gilanis Distributor's</div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your trusted wholesale partner for premium products across Kenya.</p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="bg-gray-800 hover:bg-primary-600 w-10 h-10 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-primary-600 w-10 h-10 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-primary-600 w-10 h-10 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-primary-600 w-10 h-10 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-primary-500 transition">About Us</a></li>
+                        <li><a href="shop.html" class="hover:text-primary-500 transition">Shop</a></li>
+                        <li><a href="calculator.html" class="hover:text-primary-500 transition">Pricing Calculator</a></li>
+                        <li><a href="gallery.html" class="hover:text-primary-500 transition">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-primary-500 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html?category=cooking-oils" class="hover:text-primary-500 transition">Cooking Oils</a></li>
+                        <li><a href="shop.html?category=rice" class="hover:text-primary-500 transition">Rice & Grains</a></li>
+                        <li><a href="shop.html?category=flour" class="hover:text-primary-500 transition">Flour</a></li>
+                        <li><a href="shop.html?category=energy-drinks" class="hover:text-primary-500 transition">Energy Drinks</a></li>
+                        <li><a href="shop.html?category=detergents" class="hover:text-primary-500 transition">Detergents & Soaps</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary-500 mt-1 mr-3"></i>
+                            <span>Sigona, Behind Golf Club<br>Kikuyu, Kenya</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary-500 mr-3"></i>
+                            <span>+254 700 000 000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary-500 mr-3"></i>
+                            <span>info@gilanis.co.ke</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-primary-500 mr-3"></i>
+                            <span>Mon - Sat: 8AM - 6PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2024 Gilanis Distributor's. All rights reserved.
+                </p>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="hover:text-primary-500 transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary-500 transition">Terms of Service</a>
+                    <a href="#" class="hover:text-primary-500 transition">Shipping Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254700000000" target="_blank" class="fixed bottom-6 right-6 bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-700 transition-all duration-300 transform hover:scale-110 z-50">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+</body>
+</html>

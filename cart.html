@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" x-data="cartData()" :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Gilanis Distributor's</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    }
+                }
+            }
+        }
+        
+        function cartData() {
+            return {
+                darkMode: false,
+                mobileMenu: false,
+                cartItems: [
+                    {
+                        id: 1,
+                        name: 'Rina Cooking Oil - 20L',
+                        category: 'Cooking Oils',
+                        price: 4200,
+                        quantity: 12,
+                        image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=200&h=200&fit=crop'
+                    },
+                    {
+                        id: 2,
+                        name: 'Basmati Rice - 25kg',
+                        category: 'Rice & Grains',
+                        price: 3800,
+                        quantity: 20,
+                        image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=200&h=200&fit=crop'
+                    },
+                    {
+                        id: 3,
+                        name: 'Sunlight Detergent - 2kg',
+                        category: 'Detergents',
+                        price: 650,
+                        quantity: 24,
+                        image: 'https://images.unsplash.com/photo-1585807893062-b4296f8f6d68?w=200&h=200&fit=crop'
+                    }
+                ],
+                
+                get cartCount() {
+                    return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+                },
+                
+                get subtotal() {
+                    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+                },
+                
+                get deliveryFee() {
+                    return this.subtotal >= 50000 ? 0 : 1500;
+                },
+                
+                get total() {
+                    return this.subtotal + this.deliveryFee;
+                },
+                
+                updateQuantity(id, change) {
+                    const item = this.cartItems.find(i => i.id === id);
+                    if (item) {
+                        item.quantity = Math.max(1, item.quantity + change);
+                    }
+                },
+                
+                removeItem(id) {
+                    this.cartItems = this.cartItems.filter(i => i.id !== id);
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    
+    <!-- Top Promo Bar -->
+    <div class="bg-primary-600 text-white py-2 text-sm">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span class="font-semibold"><i class="fas fa-bolt mr-2"></i>WHOLESALE SALE UP TO 40% OFF - BULK ORDERS</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="tel:+254700000000" class="hover:underline"><i class="fas fa-phone mr-1"></i>+254 700 000 000</a>
+                <span>|</span>
+                <span>Kikuyu, Sigona - Kenya</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="bg-primary-600 text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold">
+                        GD
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-gray-900 dark:text-white">Gilanis Distributor's</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">Wholesale Solutions</div>
+                    </div>
+                </a>
+
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Home</a>
+                    <a href="shop.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Shop</a>
+                    <a href="calculator.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Pricing Calculator</a>
+                    <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">About Us</a>
+                    <a href="gallery.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Gallery</a>
+                    <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    <button @click="darkMode = !darkMode" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500">
+                        <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'" class="text-xl"></i>
+                    </button>
+                    <a href="cart.html" class="relative text-primary-600 dark:text-primary-500">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span x-show="cartCount > 0" class="absolute -top-2 -right-2 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" x-text="cartCount"></span>
+                    </a>
+                    <a href="#" class="hidden md:block bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition">
+                        Sign In
+                    </a>
+                    <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div x-show="mobileMenu" x-cloak class="lg:hidden pb-4 border-t dark:border-gray-700 mt-2 pt-4">
+                <a href="index.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Home</a>
+                <a href="shop.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Shop</a>
+                <a href="calculator.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Pricing Calculator</a>
+                <a href="about.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">About Us</a>
+                <a href="gallery.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Gallery</a>
+                <a href="contact.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-primary-600 to-primary-800 py-12">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-white mb-2">Shopping Cart</h1>
+            <p class="text-white opacity-90">Review your wholesale order</p>
+        </div>
+    </div>
+
+    <!-- Cart Content -->
+    <div class="container mx-auto px-4 py-12">
+        <!-- Empty Cart State -->
+        <div x-show="cartItems.length === 0" class="text-center py-16">
+            <div class="bg-gray-100 dark:bg-gray-800 w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-shopping-cart text-6xl text-gray-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Your Cart is Empty</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-8">Start adding products to your wholesale order</p>
+            <a href="shop.html" class="inline-block bg-primary-600 text-white px-8 py-3 rounded-lg hover:bg-primary-700 transition font-semibold">
+                <i class="fas fa-shopping-bag mr-2"></i>Browse Products
+            </a>
+        </div>
+
+        <!-- Cart with Items -->
+        <div x-show="cartItems.length > 0" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Cart Items -->
+            <div class="lg:col-span-2 space-y-4">
+                <template x-for="item in cartItems" :key="item.id">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col sm:flex-row gap-6">
+                        <!-- Product Image -->
+                        <div class="flex-shrink-0">
+                            <img :src="item.image" :alt="item.name" class="w-32 h-32 object-cover rounded-lg">
+                        </div>
+
+                        <!-- Product Details -->
+                        <div class="flex-grow">
+                            <div class="text-sm text-gray-500 dark:text-gray-400 mb-1" x-text="item.category"></div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2" x-text="item.name"></h3>
+                            <div class="text-2xl font-bold text-primary-600 mb-4" x-text="'KSh ' + item.price.toLocaleString()"></div>
+
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                                <!-- Quantity Controls -->
+                                <div class="flex items-center border-2 border-gray-300 dark:border-gray-600 rounded-lg">
+                                    <button @click="updateQuantity(item.id, -1)" class="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <div class="px-6 py-2 border-x-2 border-gray-300 dark:border-gray-600 font-semibold" x-text="item.quantity"></div>
+                                    <button @click="updateQuantity(item.id, 1)" class="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Subtotal & Remove -->
+                                <div class="flex items-center space-x-4">
+                                    <div class="text-right">
+                                        <div class="text-sm text-gray-500 dark:text-gray-400">Subtotal</div>
+                                        <div class="text-xl font-bold text-gray-900 dark:text-white" x-text="'KSh ' + (item.price * item.quantity).toLocaleString()"></div>
+                                    </div>
+                                    <button @click="removeItem(item.id)" class="text-red-600 hover:text-red-700 p-2">
+                                        <i class="fas fa-trash text-xl"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Continue Shopping Button -->
+                <div class="pt-4">
+                    <a href="shop.html" class="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-1">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 sticky top-24">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Order Summary</h2>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 dark:text-gray-400">Items (<span x-text="cartCount"></span>):</span>
+                            <span class="font-semibold text-gray-900 dark:text-white" x-text="'KSh ' + subtotal.toLocaleString()"></span>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 dark:text-gray-400">Delivery Fee:</span>
+                            <span class="font-semibold text-gray-900 dark:text-white">
+                                <span x-show="deliveryFee === 0" class="text-green-600">FREE</span>
+                                <span x-show="deliveryFee > 0" x-text="'KSh ' + deliveryFee.toLocaleString()"></span>
+                            </span>
+                        </div>
+
+                        <div x-show="deliveryFee > 0 && subtotal < 50000" class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 text-sm">
+                            <i class="fas fa-info-circle text-blue-600 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">
+                                Spend <span class="font-semibold" x-text="'KSh ' + (50000 - subtotal).toLocaleString()"></span> more for FREE delivery!
+                            </span>
+                        </div>
+
+                        <hr class="border-gray-200 dark:border-gray-700">
+
+                        <div class="flex justify-between items-center text-xl">
+                            <span class="font-bold text-gray-900 dark:text-white">Total:</span>
+                            <span class="font-bold text-primary-600" x-text="'KSh ' + total.toLocaleString()"></span>
+                        </div>
+                    </div>
+
+                    <!-- Coupon Code -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Have a coupon code?</label>
+                        <div class="flex gap-2">
+                            <input type="text" placeholder="Enter code" class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-600">
+                            <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white px-4 py-2 rounded-lg font-semibold transition">
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Checkout Button -->
+                    <a href="checkout.html" class="block w-full bg-primary-600 text-white py-4 px-6 rounded-lg hover:bg-primary-700 transition font-semibold text-center text-lg mb-3">
+                        <i class="fas fa-lock mr-2"></i>Proceed to Checkout
+                    </a>
+
+                    <!-- WhatsApp Order -->
+                    <a href="https://wa.me/254700000000" target="_blank" class="block w-full bg-green-600 text-white py-4 px-6 rounded-lg hover:bg-green-700 transition font-semibold text-center">
+                        <i class="fab fa-whatsapp mr-2"></i>Order via WhatsApp
+                    </a>
+
+                    <!-- Security Badge -->
+                    <div class="mt-6 text-center">
+                        <div class="flex items-center justify-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                            <i class="fas fa-shield-alt text-green-600"></i>
+                            <span>Secure Checkout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="bg-primary-600 text-white w-10 h-10 rounded-lg flex items-center justify-center text-lg font-bold">
+                            GD
+                        </div>
+                        <div class="text-white font-bold text-lg">Gilanis Distributor's</div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your trusted wholesale partner for premium products across Kenya.</p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="bg-gray-800 hover:bg-primary-600 w-10 h-10 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-primary-600 w-10 h-10 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-primary-600 w-10 h-10 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-primary-600 w-10 h-10 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-primary-500 transition">About Us</a></li>
+                        <li><a href="shop.html" class="hover:text-primary-500 transition">Shop</a></li>
+                        <li><a href="calculator.html" class="hover:text-primary-500 transition">Pricing Calculator</a></li>
+                        <li><a href="gallery.html" class="hover:text-primary-500 transition">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-primary-500 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html?category=cooking-oils" class="hover:text-primary-500 transition">Cooking Oils</a></li>
+                        <li><a href="shop.html?category=rice" class="hover:text-primary-500 transition">Rice & Grains</a></li>
+                        <li><a href="shop.html?category=flour" class="hover:text-primary-500 transition">Flour</a></li>
+                        <li><a href="shop.html?category=energy-drinks" class="hover:text-primary-500 transition">Energy Drinks</a></li>
+                        <li><a href="shop.html?category=detergents" class="hover:text-primary-500 transition">Detergents & Soaps</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary-500 mt-1 mr-3"></i>
+                            <span>Sigona, Behind Golf Club<br>Kikuyu, Kenya</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary-500 mr-3"></i>
+                            <span>+254 700 000 000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary-500 mr-3"></i>
+                            <span>info@gilanis.co.ke</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-primary-500 mr-3"></i>
+                            <span>Mon - Sat: 8AM - 6PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2024 Gilanis Distributor's. All rights reserved.
+                </p>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="hover:text-primary-500 transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary-500 transition">Terms of Service</a>
+                    <a href="#" class="hover:text-primary-500 transition">Shipping Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254700000000" target="_blank" class="fixed bottom-6 right-6 bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-700 transition-all duration-300 transform hover:scale-110 z-50">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+</body>
+</html>
