@@ -36,15 +36,19 @@
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
     
     <!-- Top Promo Bar -->
-    <div class="bg-primary-600 text-white py-2 text-sm">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <span class="font-semibold"><i class="fas fa-bolt mr-2"></i>WHOLESALE SALE UP TO 40% OFF - BULK ORDERS</span>
+    <div class="bg-primary-600 text-white py-2 text-xs sm:text-sm overflow-x-auto">
+        <div class="container mx-auto px-4 flex justify-between items-center min-w-max sm:min-w-0">
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <span class="font-semibold">
+                    <i class="fas fa-bolt mr-1 sm:mr-2"></i>
+                    <span class="hidden sm:inline">WHOLESALE SALE UP TO 40% OFF - BULK ORDERS</span>
+                    <span class="sm:hidden">SALE UP TO 40% OFF</span>
+                </span>
             </div>
             <div class="hidden md:flex items-center space-x-4">
-                <a href="tel:+254700000000" class="hover:underline"><i class="fas fa-phone mr-1"></i>+254 700 000 000</a>
+                <a href="tel:+254700000000" class="hover:underline whitespace-nowrap"><i class="fas fa-phone mr-1"></i>+254 700 000 000</a>
                 <span>|</span>
-                <span>Kikuyu, Sigona - Kenya</span>
+                <span class="whitespace-nowrap">Kikuyu, Sigona - Kenya</span>
             </div>
         </div>
     </div>
@@ -55,12 +59,12 @@
             <div class="flex justify-between items-center py-4">
                 <!-- Logo -->
                 <a href="index.html" class="flex items-center space-x-2">
-                    <div class="bg-primary-600 text-white w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold">
+                    <div class="bg-primary-600 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-lg sm:text-xl font-bold">
                         GD
                     </div>
                     <div>
-                        <div class="text-xl font-bold text-gray-900 dark:text-white">Gilanis Distributor's</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400">Wholesale Solutions</div>
+                        <div class="text-base sm:text-xl font-bold text-gray-900 dark:text-white">Gilanis Distributor's</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 hidden sm:block">Wholesale Solutions</div>
                     </div>
                 </a>
 
@@ -75,85 +79,85 @@
                 </div>
 
                 <!-- Right Side Icons -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2 sm:space-x-4">
                     <!-- Search -->
-                    <button class="hidden md:block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500">
+                    <button class="hidden md:block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 p-2 min-w-[44px] min-h-[44px]">
                         <i class="fas fa-search text-xl"></i>
                     </button>
 
                     <!-- Dark Mode Toggle -->
-                    <button @click="darkMode = !darkMode" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500">
+                    <button @click="darkMode = !darkMode" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 p-2 min-w-[44px] min-h-[44px]">
                         <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'" class="text-xl"></i>
                     </button>
 
                     <!-- Cart -->
-                    <a href="cart.html" class="relative text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500">
+                    <a href="cart.html" class="relative text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center">
                         <i class="fas fa-shopping-cart text-xl"></i>
-                        <span x-show="cartCount > 0" class="absolute -top-2 -right-2 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" x-text="cartCount"></span>
+                        <span x-show="cartCount > 0" class="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" x-text="cartCount"></span>
                     </a>
 
                     <!-- Sign In -->
-                    <a href="#" class="hidden md:block bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition">
+                    <a href="#" class="hidden md:block bg-primary-600 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-primary-700 transition text-sm sm:text-base">
                         Sign In
                     </a>
 
                     <!-- Mobile Menu Toggle -->
-                    <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-gray-700 dark:text-gray-300">
+                    <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-gray-700 dark:text-gray-300 p-2 min-w-[44px] min-h-[44px]">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Menu -->
-            <div x-show="mobileMenu" x-cloak class="lg:hidden pb-4 border-t dark:border-gray-700 mt-2 pt-4">
-                <a href="index.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Home</a>
-                <a href="shop.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Shop</a>
-                <a href="calculator.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Pricing Calculator</a>
-                <a href="about.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">About Us</a>
-                <a href="gallery.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Gallery</a>
-                <a href="contact.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600">Contact</a>
+            <div x-show="mobileMenu" x-cloak class="lg:hidden pb-4 border-t dark:border-gray-700 mt-2 pt-2">
+                <a href="index.html" class="block py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors min-h-[44px] flex items-center text-base font-medium">Home</a>
+                <a href="shop.html" class="block py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors min-h-[44px] flex items-center text-base font-medium">Shop</a>
+                <a href="calculator.html" class="block py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors min-h-[44px] flex items-center text-base font-medium">Pricing Calculator</a>
+                <a href="about.html" class="block py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors min-h-[44px] flex items-center text-base font-medium">About Us</a>
+                <a href="gallery.html" class="block py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors min-h-[44px] flex items-center text-base font-medium">Gallery</a>
+                <a href="contact.html" class="block py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors min-h-[44px] flex items-center text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Banner -->
-    <section class="relative bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 py-20">
+    <section class="relative bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 py-10 sm:py-16 md:py-20">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-block bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                        <i class="fas fa-fire mr-2"></i>WHOLESALE DEALS
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="inline-block bg-primary-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">
+                        <i class="fas fa-fire mr-1 sm:mr-2"></i>WHOLESALE DEALS
                     </div>
-                    <h1 class="text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white leading-tight">
                         Kenya's Leading <span class="text-primary-600">Wholesale</span> Distributor
                     </h1>
-                    <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">
+                    <p class="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6 sm:mb-8">
                         Premium cooking oils, rice, flour, energy drinks & cleaning products. Best bulk prices, country-wide delivery from Kikuyu.
                     </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="shop.html" class="bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition transform hover:scale-105">
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                        <a href="shop.html" class="w-full sm:w-auto text-center bg-primary-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-primary-700 transition transform hover:scale-105 min-h-[48px] flex items-center justify-center">
                             <i class="fas fa-shopping-bag mr-2"></i>Browse Catalog
                         </a>
-                        <a href="calculator.html" class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 px-8 py-4 rounded-lg font-semibold hover:border-primary-600 transition">
+                        <a href="calculator.html" class="w-full sm:w-auto text-center bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:border-primary-600 transition min-h-[48px] flex items-center justify-center">
                             <i class="fas fa-calculator mr-2"></i>Price Calculator
                         </a>
                     </div>
-                    <div class="mt-8 flex items-center space-x-6 text-sm">
+                    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 text-sm">
                         <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                            <i class="fas fa-check-circle text-green-600 mr-2 text-base"></i>
                             <span class="text-gray-700 dark:text-gray-300">Free Delivery on Bulk Orders</span>
                         </div>
                         <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                            <i class="fas fa-check-circle text-green-600 mr-2 text-base"></i>
                             <span class="text-gray-700 dark:text-gray-300">10+ Years Trusted</span>
                         </div>
                     </div>
                 </div>
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
-                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 transform -rotate-3">
-                            <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&h=400&fit=crop" alt="Wholesale Products" class="rounded-xl w-full h-80 object-cover">
-                            <div class="absolute top-8 right-8 bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-bold text-xl shadow-lg">
+                <div class="relative order-1 lg:order-2 hidden sm:block">
+                    <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-3xl p-6 sm:p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 transform -rotate-3">
+                            <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&h=400&fit=crop" alt="Wholesale Products" class="rounded-xl w-full h-60 sm:h-80 object-cover" loading="lazy">
+                            <div class="absolute top-6 sm:top-8 right-6 sm:right-8 bg-yellow-400 text-gray-900 px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-base sm:text-xl shadow-lg">
                                 UP TO 40% OFF
                             </div>
                         </div>
@@ -164,71 +168,71 @@
     </section>
 
     <!-- Quick Category Grid -->
-    <section class="py-16 bg-white dark:bg-gray-900">
+    <section class="py-12 sm:py-16 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Shop by Category</h2>
-                <p class="text-gray-600 dark:text-gray-400">Browse our extensive range of wholesale products</p>
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4">Shop by Category</h2>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Browse our extensive range of wholesale products</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
                 <!-- Category 1 -->
-                <a href="shop.html?category=cooking-oils" class="group">
-                    <div class="bg-gradient-to-br from-orange-100 to-orange-50 dark:from-orange-900 dark:to-orange-800 rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4 text-orange-600 dark:text-orange-400">
+                <a href="shop.html?category=cooking-oils" class="group min-h-[140px] sm:min-h-[160px]">
+                    <div class="bg-gradient-to-br from-orange-100 to-orange-50 dark:from-orange-900 dark:to-orange-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col justify-center">
+                        <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-orange-600 dark:text-orange-400">
                             <i class="fas fa-oil-can"></i>
                         </div>
-                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Cooking Oils</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Rina, Salit, Pika</p>
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 dark:text-white mb-1 sm:mb-2">Cooking Oils</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Rina, Salit, Pika</p>
                     </div>
                 </a>
                 <!-- Category 2 -->
-                <a href="shop.html?category=rice" class="group">
-                    <div class="bg-gradient-to-br from-green-100 to-green-50 dark:from-green-900 dark:to-green-800 rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4 text-green-600 dark:text-green-400">
+                <a href="shop.html?category=rice" class="group min-h-[140px] sm:min-h-[160px]">
+                    <div class="bg-gradient-to-br from-green-100 to-green-50 dark:from-green-900 dark:to-green-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col justify-center">
+                        <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-green-600 dark:text-green-400">
                             <i class="fas fa-seedling"></i>
                         </div>
-                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Rice & Grains</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Basmati, Pishori</p>
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 dark:text-white mb-1 sm:mb-2">Rice & Grains</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Basmati, Pishori</p>
                     </div>
                 </a>
                 <!-- Category 3 -->
-                <a href="shop.html?category=flour" class="group">
-                    <div class="bg-gradient-to-br from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4 text-yellow-600 dark:text-yellow-400">
+                <a href="shop.html?category=flour" class="group min-h-[140px] sm:min-h-[160px]">
+                    <div class="bg-gradient-to-br from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col justify-center">
+                        <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-yellow-600 dark:text-yellow-400">
                             <i class="fas fa-wheat-awn"></i>
                         </div>
-                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Flour</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Maize, Wheat Bales</p>
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 dark:text-white mb-1 sm:mb-2">Flour</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Maize, Wheat Bales</p>
                     </div>
                 </a>
                 <!-- Category 4 -->
-                <a href="shop.html?category=energy-drinks" class="group">
-                    <div class="bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900 dark:to-blue-800 rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4 text-blue-600 dark:text-blue-400">
+                <a href="shop.html?category=energy-drinks" class="group min-h-[140px] sm:min-h-[160px]">
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900 dark:to-blue-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col justify-center">
+                        <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-blue-600 dark:text-blue-400">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Energy Drinks</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Red Bull, Predator</p>
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 dark:text-white mb-1 sm:mb-2">Energy Drinks</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Red Bull, Predator</p>
                     </div>
                 </a>
                 <!-- Category 5 -->
-                <a href="shop.html?category=detergents" class="group">
-                    <div class="bg-gradient-to-br from-purple-100 to-purple-50 dark:from-purple-900 dark:to-purple-800 rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4 text-purple-600 dark:text-purple-400">
+                <a href="shop.html?category=detergents" class="group min-h-[140px] sm:min-h-[160px]">
+                    <div class="bg-gradient-to-br from-purple-100 to-purple-50 dark:from-purple-900 dark:to-purple-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full flex-col justify-center">
+                        <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-purple-600 dark:text-purple-400">
                             <i class="fas fa-spray-can"></i>
                         </div>
-                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Detergents</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Sunlight, Jik</p>
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 dark:text-white mb-1 sm:mb-2">Detergents</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Sunlight, Jik</p>
                     </div>
                 </a>
                 <!-- Category 6 -->
-                <a href="shop.html?category=soaps" class="group">
-                    <div class="bg-gradient-to-br from-pink-100 to-pink-50 dark:from-pink-900 dark:to-pink-800 rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4 text-pink-600 dark:text-pink-400">
+                <a href="shop.html?category=soaps" class="group min-h-[140px] sm:min-h-[160px]">
+                    <div class="bg-gradient-to-br from-pink-100 to-pink-50 dark:from-pink-900 dark:to-pink-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col justify-center">
+                        <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-pink-600 dark:text-pink-400">
                             <i class="fas fa-soap"></i>
                         </div>
-                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Soaps</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Menengai, Msafi</p>
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 dark:text-white mb-1 sm:mb-2">Soaps</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Menengai, Msafi</p>
                     </div>
                 </a>
             </div>
